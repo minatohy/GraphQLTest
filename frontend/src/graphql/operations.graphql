@@ -1,0 +1,41 @@
+fragment TaskParts on Task{
+    id
+    title
+    description
+    status
+    updatedAt
+}
+
+query getTask($id:ID!){
+    task(id:$id){
+        ...TaskParts
+    }
+}
+
+query getTasks{
+    tasks{
+        ...TaskParts
+    }
+}
+
+query testTask{
+    taskTest
+}
+
+mutation addTask($taskInput:AddTaskInput!){
+    taskAdd(taskInput:$taskInput){
+        ...TaskParts
+    }
+}
+
+mutation updateTask($taskInput:UpdateTaskInput!){
+    taskUpdate(taskInput:$taskInput){
+        ...TaskParts
+    }
+}
+
+mutation deleteTask($id:ID!){
+    taskDelete(id:$id){
+        ...TaskParts
+    }
+}
